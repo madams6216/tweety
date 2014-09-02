@@ -1,26 +1,32 @@
-<div class="page-header">
-  <h1>Tweets</h1>
 
-
-
+<div class="col-md-2">
+</div>
+<div class="col-md-8">
+<div class="panel panel-default">
+	<ul class="list-group">
+		<li class="list-group-item"><h2 class="tweet_title text-muted">Tweets</h2></li>
+		<% @tweets.each do |tweet| %>
+			<li class="list-group-item">
+				<div class="tweet media">
+					<%= image_tag tweet.user.gravatar_url, class: 'gravatar media-object pull-left img-rounded' %>
+					<% if signed_in? && current_user == tweet.user %>
+						<div class="pull-right meta admin">	
+							<%= link_to 'Show', tweet %> | <%= link_to 'Edit', edit_tweet_path(tweet) %> | <%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %>
+						</div>
+				    <% end %>
+					<div class="media-body">
+						<h3 class="media-heading"><%= tweet.user.name %> <small>@<%= tweet.user.username %> - <%= time_ago_in_words(tweet.created_at) + " ago" %></small></h3>
+					  	<p><%= tweet.content %></p>
+					</div>
+				</div>
+			</li>
+		<% end %>
+	</ul>
 </div>
 
-
-<% @tweets.each do |tweet| %>
-  
-<div class="container tweet">
-<div>
-	<%= image_tag tweet.user.gravatar_url, class: 'gravatar pull-left img-rounded' %>
-</div>
-	<h3><%= tweet.user.name %> <small>@<%= tweet.user.username %> - <%= time_ago_in_words(tweet.created_at) + " ago" %></small></h3>
-
-  <p><%= tweet.content %></p>
-  
-    <% if signed_in? && current_user == tweet.user %>
-      <p><%= link_to 'Show', tweet %> | <%= link_to 'Edit', edit_tweet_path(tweet) %> | <%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-    <% end %>
-</div>
-  <% end %>
 
 <br />
 <h4><%= link_to 'New Tweet', new_tweet_path %></h4>
+</div>
+<div class="col-md-2">
+</div>

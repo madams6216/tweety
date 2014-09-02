@@ -16,7 +16,7 @@
 
 body {
 	background-color:#fff;
-	padding-top: 50px;
+	padding-top: 10px;
 }
 
 
@@ -26,7 +26,6 @@ body {
 }
 
 .tweet {
-	border-bottom: solid 1px #ccc;
 	margin-top: 0;
 	padding: 10px 0;
 }
@@ -35,6 +34,34 @@ body {
 	background: #FAFAFA;
 }
 
+.tweet_content {
+	display: inline;
+}
+
+.admin {
+	margin-right:15px;
+}
+
+.tweet .admin {
+	display: none;
+}
+
+.tweet:hover .admin {
+	display: inline;
+}
+
+.media-heading {
+	margin-bottom: 10px;
+}
+
 .gravatar {
-	padding-right: 10px;
+	margin-left:10px;
+}
+
+.list-group-item {
+	padding: 0px;
+}
+
+.tweet_title {
+	margin-left: 15px;
 }
