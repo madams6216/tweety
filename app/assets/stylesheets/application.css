@@ -16,13 +16,12 @@
 
 body {
 	background-color:#fff;
-	padding-top: 10px;
+	padding-top: 60px;
 }
 
 
-#white-bg {
-	background: #fff;
-	margin-top: 20px;
+.alert {
+  margin-top: 10px;
 }
 
 .tweet {
@@ -38,7 +37,7 @@ body {
 	display: inline;
 }
 
-.admin {
+.media-body {
 	margin-right:15px;
 }
 

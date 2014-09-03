@@ -1,32 +1,29 @@
-
 <div class="col-md-2">
 </div>
 <div class="col-md-8">
-<div class="panel panel-default">
-	<ul class="list-group">
-		<li class="list-group-item"><h2 class="tweet_title text-muted">Tweets</h2></li>
-		<% @tweets.each do |tweet| %>
-			<li class="list-group-item">
-				<div class="tweet media">
-					<%= image_tag tweet.user.gravatar_url, class: 'gravatar media-object pull-left img-rounded' %>
-					<% if signed_in? && current_user == tweet.user %>
-						<div class="pull-right meta admin">	
-							<%= link_to 'Show', tweet %> | <%= link_to 'Edit', edit_tweet_path(tweet) %> | <%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %>
-						</div>
-				    <% end %>
-					<div class="media-body">
-						<h3 class="media-heading"><%= tweet.user.name %> <small>@<%= tweet.user.username %> - <%= time_ago_in_words(tweet.created_at) + " ago" %></small></h3>
-					  	<p><%= tweet.content %></p>
+	<div class="panel panel-default">
+		<ul class="list-group">
+			<li class="list-group-item"><h4 class="tweet_title text-muted">Tweets</h4></li>
+			<% @tweets.each do |tweet| %>
+				<li class="list-group-item">
+					<div class="tweet media">
+						<%= image_tag tweet.user.gravatar_url, class: 'gravatar media-object pull-left img-rounded' %>
+						<div class="media-body">
+							<h4 class="media-heading"><%= tweet.user.name %> <small>@<%= tweet.user.username %> - <%= time_ago_in_words(tweet.created_at) + " ago" %> 					
+								<% if signed_in? && current_user == tweet.user %>
+									<p class="meta admin">	
+										&nbsp;&nbsp;<a href="<%= edit_tweet_path(tweet) %>"><span class="glyphicon glyphicon-edit"></span></a> | <%= link_to 'Remove', tweet, method: :delete, data: { confirm: 'Are you sure?' } %>
+									</p>
+						    	<% end %>
+					    		</small>
+					    	</h4>
+						  	<p><%= tweet.content %></p>
+					    </div>
 					</div>
-				</div>
-			</li>
-		<% end %>
-	</ul>
-</div>
-
-
-<br />
-<h4><%= link_to 'New Tweet', new_tweet_path %></h4>
+				</li>
+			<% end %>
+		</ul>
+	</div>
 </div>
 <div class="col-md-2">
 </div>
