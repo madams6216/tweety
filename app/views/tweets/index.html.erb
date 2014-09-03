@@ -9,15 +9,18 @@
 					<div class="tweet media">
 						<%= image_tag tweet.user.gravatar_url, class: 'gravatar media-object pull-left img-rounded' %>
 						<div class="media-body">
-							<h4 class="media-heading"><%= tweet.user.name %> <small>@<%= tweet.user.username %> - <%= time_ago_in_words(tweet.created_at) + " ago" %> 					
-								<% if signed_in? && current_user == tweet.user %>
-									<p class="meta admin">	
-										&nbsp;&nbsp;<a href="<%= edit_tweet_path(tweet) %>"><span class="glyphicon glyphicon-edit"></span></a> | <%= link_to 'Remove', tweet, method: :delete, data: { confirm: 'Are you sure?' } %>
-									</p>
-						    	<% end %>
+							<h4 class="media-heading"><%= tweet.user.name %> <small>@<%= tweet.user.username %> - <%= time_ago_in_words(tweet.created_at) + " ago" %>
 					    		</small>
 					    	</h4>
 						  	<p><%= tweet.content %></p>
+						  	<p class="meta">
+						  	<span class="glyphicon glyphicon-share-alt"></span> Reply
+						  	<% if signed_in? && current_user == tweet.user %>
+								<span class="admin pull-right">	
+									<a href="<%= edit_tweet_path(tweet) %>"><span class="glyphicon glyphicon-edit"></span> Edit</a> | <%= link_to 'Remove', tweet, method: :delete, data: { confirm: 'Are you sure?' } %>
+								</span>
+						    <% end %>
+						    </p>
 					    </div>
 					</div>
 				</li>
